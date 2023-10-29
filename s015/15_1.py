@@ -1,0 +1,3 @@
+Mylist = [""]
+Mystring = ""
+Mydict = {""}
