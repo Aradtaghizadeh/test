@@ -7,7 +7,9 @@ from time import sleep
 
 player = pygame.mixer
 player.init()
-player.music.load('train.mp3.mp3')
+def load(n):
+    player.music.load(n)
+    player.music.play()
 def myinput(i):
     answer = input(f"{i}: ").lower()
     while answer not in i:
@@ -16,8 +18,12 @@ def myinput(i):
 
 def play(a):
     if a=='salon':
-        player.music.play()
-    if a =='exit':
+        load('hang_drum.mp3')
+    elif a=='garden':
+        load('birds.mp3')
+     
+
+    elif a =='exit':
         print('***Thank for playing this game***')
         exit()
 
@@ -51,13 +57,25 @@ def play(a):
         a = myinput(act.get('room'))
         play(a)
 
-    elif a in ['mount', 'garden', 'city', 'beach', 'jungle', 'home']:
+    elif a in transport_i:
+        print(act.get(a))
+        c = input('Where do you go? ')
+        if c not in out_i :
+            input('Where do you go? ')
+            
+        if a=='airplane':
+            load('plane.mp3')
+        elif a=='car':
+            load('car.mp3')
+        elif a=='train':
+            load('train.mp3')
         for i in range(10, 0, -1):
             sleep(1)
             print(f"wait {i} seconds to arrive that place. ")
-        print(p.get(a))
-        a = myinput(act.get(a))
-        play(a)
+        player.music.stop()
+        print(p.get(c))
+        c = myinput(act.get(c))
+        play(c)
         
     print(p.get(a))
     a = myinput(act.get(a))
@@ -132,7 +150,7 @@ act = {
     'car':['mount', 'city', 'jungle', 'home','exit'],
     'airplane':['mount', 'jungle', 'beach', 'home', 'exit'],
     'horse':['garden', 'jungle', 'mount', 'home', 'exit'],
-    'ship':['beach', 'house', 'exit'],
+    'ship':['beach', 'home', 'exit'],
     'train':['city', 'mount', 'home', 'exit'],
     'mount':['car', 'airplane', 'ship', 'horse', 'train', 'exit'],
     'beach':['car', 'airplane', 'ship', 'horse', 'train', 'exit'],
