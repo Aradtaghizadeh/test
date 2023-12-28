@@ -166,11 +166,13 @@ while command not in ["end", "exit", "back", "finish","payan"]:
     elif command in ("title", "mozo"):
         ac = textinput("Title", "Enter title")
         aa = numinput("Size", "Enter size: ")
+        an = textinput("Pencolor", "Enter pencolor")
         x = numinput("X", "Enter X: ")
         y = numinput("Y", "Enter Y: ")
         up()
         goto(x, y)
         down()
+        pencolor(an)
         write(ac, font=(aa))
     elif command in ("fd", "forward"):
         ab = numinput("Forward", "Enter forward")
